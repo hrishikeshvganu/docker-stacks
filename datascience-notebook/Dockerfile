@@ -4,12 +4,15 @@ MAINTAINER Jupyter Project <jupyter@googlegroups.com>
 
 USER root
 
-# R pre-requisites
+
+
+# R pre-requisites + xgboost
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     libxrender1 \
     fonts-dejavu \
     gfortran \
+    git \
     gcc && apt-get clean
 
 # Julia dependencies
@@ -20,7 +23,7 @@ RUN apt-get update && \
 
 USER jovyan
 
-# Install Python 3 packages
+# Install Python 3 packages + xgboost
 RUN conda install --yes \
     'ipywidgets=4.0*' \
     'pandas=0.16*' \
@@ -37,6 +40,7 @@ RUN conda install --yes \
     'dill=0.2*' \
     'numba=0.20*' \
     'bokeh=0.9*' \
+    'setuptools=18*'\
     && conda clean -yt
 
 # Install Python 2 packages
@@ -91,6 +95,11 @@ RUN julia -e 'Pkg.add("IJulia")' && \
 RUN julia -e 'Pkg.add("Gadfly")' && julia -e 'Pkg.add("RDatasets")'
 
 USER root
+
+RUN git clone https://github.com/dmlc/xgboost && \
+    ./xgboost/build.sh && \
+     cd ./xgboost/python-package && \
+     python3 setup.py install 
 
 # Install Python 2 kernel spec globally to avoid permission problems when NB_UID
 # switching at runtime.
