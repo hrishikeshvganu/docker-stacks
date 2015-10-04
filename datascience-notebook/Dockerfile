@@ -97,8 +97,9 @@ RUN julia -e 'Pkg.add("Gadfly")' && julia -e 'Pkg.add("RDatasets")'
 USER root
 
 RUN git clone https://github.com/dmlc/xgboost && \
-    ./xgboost/build.sh && \
-     cd ./xgboost/python-package && \
+    cd xgboost && \
+    ./build.sh && \
+     cd python-package && \
      python3 setup.py install 
 
 # Install Python 2 kernel spec globally to avoid permission problems when NB_UID
