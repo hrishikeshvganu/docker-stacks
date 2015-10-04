@@ -41,6 +41,7 @@ RUN conda install --yes \
     'numba=0.20*' \
     'bokeh=0.9*' \
     'setuptools=18*'\
+    'xgboost=*'
     && conda clean -yt
 
 # Install Python 2 packages
@@ -96,11 +97,11 @@ RUN julia -e 'Pkg.add("Gadfly")' && julia -e 'Pkg.add("RDatasets")'
 
 USER root
 
-RUN git clone https://github.com/dmlc/xgboost && \
-    cd xgboost && \
-    ./build.sh && \
-     cd python-package && \
-     python3 setup.py install 
+#RUN git clone https://github.com/dmlc/xgboost && \
+ #   cd xgboost && \
+  #  ./build.sh && \
+   #  cd python-package && \
+    # python3 setup.py install 
 
 # Install Python 2 kernel spec globally to avoid permission problems when NB_UID
 # switching at runtime.
