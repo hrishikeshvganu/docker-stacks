@@ -41,8 +41,9 @@ RUN conda install --yes \
     'numba=0.20*' \
     'bokeh=0.9*' \
     'setuptools=18*'\
-    'xgboost=*'
     && conda clean -yt
+    
+RUN    conda install --yes -c https://conda.binstar.org/aterrel xgboost
 
 # Install Python 2 packages
 RUN conda create -p $CONDA_DIR/envs/python2 python=2.7 \
