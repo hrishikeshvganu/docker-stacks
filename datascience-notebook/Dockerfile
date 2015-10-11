@@ -26,7 +26,6 @@ RUN apt-get update && \
 # Install xgboost
 RUN apt-get update && \ 
     apt-get install -y --no-install-recommends \
-    apt-get install python3-pip &&\
     python-pip \
     python-numpy \
     python-scipy && apt-get clean
