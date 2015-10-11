@@ -28,10 +28,12 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     python-pip && apt-get clean
     
-RUN pip install  \
-    numpy \
-    scipy \
-    sklearn \
+RUN DEBIAN_FRONTEND=noninteractive pip install numpy
+RUN DEBIAN_FRONTEND=noninteractive pip install scipy
+RUN DEBIAN_FRONTEND=noninteractive pip install matplotlib
+RUN DEBIAN_FRONTEND=noninteractive pip install "ipython[all]"
+RUN DEBIAN_FRONTEND=noninteractive pip install -U "pandas>0.14.0"
+RUN DEBIAN_FRONTEND=noninteractive pip install -U scikit-learn
     
 RUN git clone "https://github.com/dmlc/xgboost"  && \
     cd xgboost && \
