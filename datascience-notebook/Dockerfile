@@ -24,7 +24,8 @@ RUN apt-get update && \
 
 
 # Install xgboost
-RUN pip install numpy &&
+RUN apt-get install python3-pip &&\
+    pip install numpy &&
     git clone "https://github.com/dmlc/xgboost"  && \
     cd xgboost && \
     make &&\
