@@ -21,6 +21,13 @@ RUN apt-get update && \
     julia \
     libnettle4 && apt-get clean
 
+# Install xgboost
+RUN git clone https://github.com/dmlc/xgboost \
+    cd xgboost && \
+    make &&\
+    cd python-package && \
+    python setup.py install
+    
 USER jovyan
 
 # Install Python 3 packages + xgboost
@@ -43,7 +50,6 @@ RUN conda install --yes \
     'setuptools=18*'\
     && conda clean -yt
 
-RUN pip install xgboost
 
 # Install Python 2 packages
 RUN conda create -p $CONDA_DIR/envs/python2 python=2.7 \
