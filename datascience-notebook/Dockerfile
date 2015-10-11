@@ -43,11 +43,10 @@ RUN conda install --yes \
     'setuptools=18*'\
     && conda clean -yt
     
-RUN git clone https://github.com/dmlc/xgboost && \
-    cd xgboost && \
-    ./build.sh && \
-    cd python-package && \
-    python setup.py install 
+#xgboost
+    cd /usr/local/src && mkdir xgboost && cd xgboost && \
+    git clone https://github.com/dmlc/xgboost.git && cd xgboost && \
+    make && cd python-package && python setup.py install && \
 
 # Install Python 2 packages
 RUN conda create -p $CONDA_DIR/envs/python2 python=2.7 \
