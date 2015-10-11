@@ -26,10 +26,12 @@ RUN apt-get update && \
 # Install xgboost
 RUN apt-get update && \ 
     apt-get install -y --no-install-recommends \
-    python-pip \
-    python-numpy \
-    python-scipy && apt-get clean
+    python-pip && apt-get clean
     
+RUN pip install --yes \
+    numpy \
+    scipy \
+    sklearn \
     
 RUN git clone "https://github.com/dmlc/xgboost"  && \
     cd xgboost && \
