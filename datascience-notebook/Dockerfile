@@ -41,12 +41,8 @@ RUN conda install --yes \
     'numba=0.20*' \
     'bokeh=0.9*' \
     'setuptools=18*'\
+    'xgboost=0.4*'\
     && conda clean -yt
-    
-#xgboost
-RUN    cd ~/ && mkdir xgboost && cd xgboost && \
-    git clone https://github.com/dmlc/xgboost.git && cd xgboost && \
-    make && cd python-package && python setup.py install 
 
 # Install Python 2 packages
 RUN conda create -p $CONDA_DIR/envs/python2 python=2.7 \
