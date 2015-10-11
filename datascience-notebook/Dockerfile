@@ -22,7 +22,7 @@ RUN apt-get update && \
     libnettle4 && apt-get clean
 
 # Install xgboost
-RUN git clone https://github.com/dmlc/xgboost \
+RUN git clone "https://github.com/dmlc/xgboost"  && \
     cd xgboost && \
     make &&\
     cd python-package && \
