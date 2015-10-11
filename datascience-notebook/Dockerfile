@@ -20,9 +20,12 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     julia \
     libnettle4 && apt-get clean
+#Python3 is installed on ubuntu 14.04 now
+
 
 # Install xgboost
-RUN git clone "https://github.com/dmlc/xgboost"  && \
+RUN pip install numpy &&
+    git clone "https://github.com/dmlc/xgboost"  && \
     cd xgboost && \
     make &&\
     cd python-package && \
