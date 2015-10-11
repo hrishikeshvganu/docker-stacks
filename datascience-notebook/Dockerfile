@@ -31,9 +31,9 @@ RUN apt-get update && \
     python-scipy && apt-get clean
     
     
-    git clone "https://github.com/dmlc/xgboost"  && \
+RUN git clone "https://github.com/dmlc/xgboost"  && \
     cd xgboost && \
-    make &&\
+    make && \
     cd python-package && \
     python setup.py install
     
