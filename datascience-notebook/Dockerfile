@@ -19,7 +19,7 @@ RUN apt-get update && \
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     julia \
-    libnettle4 && apt-get clean
+    libhogweed && apt-get clean
 
 
 
