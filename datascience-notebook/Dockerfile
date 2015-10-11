@@ -19,7 +19,7 @@ RUN apt-get update && \
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     julia \
-    libhogweed && apt-get clean
+    libhogweed* && apt-get clean
 
 
 
