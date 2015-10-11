@@ -28,7 +28,7 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     python-pip && apt-get clean
     
-RUN pip install --yes \
+RUN pip install  \
     numpy \
     scipy \
     sklearn \
