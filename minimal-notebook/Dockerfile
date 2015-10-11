@@ -1,5 +1,5 @@
 # Copyright (c) Jupyter Development Team.
-FROM ubuntu:15.10
+FROM ubuntu:14.10
 
 MAINTAINER Jupyter Project <jupyter@googlegroups.com>
 
